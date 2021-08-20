@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -21,6 +26,91 @@ header .fa-check-square {
 }
 header .fa-edit {
   color: goldenrod;
+}
+
+.new-todo-form {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.new-todo-form label {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.new-todo-form i {
+  cursor: pointer;
+}
+.new-todo-form .new-todo-controls * {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.new-todo-form .fa-plus {
+  padding: 12px;
+  color: #fff;
+  background: lime;
+  border: 2px solid #777;
+  border-radius: 50%;
+}
+.new-todo-form .fa-check-square {
+  font-size: 1.4rem;
+  color: lime;
+}
+.new-todo-form .fa-window-close {
+  font-size: 1.4rem;
+  color: orange;
+}
+
+.todos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: 25px 20px;
+}
+.todo-item:nth-child(even) {
+  background: #eee;
+}
+.todo-item .todo-item-section {
+  width: 200px;
+  margin: 10px auto;
+}
+.todo-item .todo-item-header {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.todo-item i {
+  cursor: pointer;
+}
+.todo-item .todo-controls {
+  flex-basis: 100%;
+  text-align: center;
+}
+.todo-item .todo-controls * {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.todo-item .fa-edit {
+  color: goldenrod;
+}
+.todo-item .fa-window-close {
+  color: orange;
+}
+.todo-item .fa-check-square {
+  color: lime;
+}
+.todo-item .fa-trash-alt {
+  color: red;
 }
 
 /*# sourceMappingURL=App.css.map */

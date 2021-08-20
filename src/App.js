@@ -6,7 +6,7 @@ import NewTodoForm from './components/NewTodoForm';
 import './style/App.css';
 
 function App() {
-  const [listName, setListName] = useState("Guest's Todo List");
+  const [listName, setListName] = useState("Todo List");
   const [todoList, setTodoList] = useState([]);
 
   const newTodo = (title, description, priority, dueDate, notes, completed) => {

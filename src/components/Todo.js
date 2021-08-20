@@ -21,6 +21,8 @@ const Todo = ({ todo, editTodo, deleteTodo, index }) => {
   }, [todo]);
 
   const confirmEditTodo = () => {
+    if (!title || !description || !dueDate || !notes) return;
+
     editTodo(title, description, priority, dueDate, notes, completed, index);
 
     setEditTodoMode(false);
@@ -28,7 +30,7 @@ const Todo = ({ todo, editTodo, deleteTodo, index }) => {
 
   const cancelEditTodo = () => {
     setEditTodoMode(false);
-    
+
     setTitle(todo.title);
     setDescription(todo.description);
     setPriority(todo.priority);
@@ -40,16 +42,16 @@ const Todo = ({ todo, editTodo, deleteTodo, index }) => {
   const displayEditTodo = () => {
     return (
       <>
-        <div>
-          <p>Title</p>
+        <div className='todo-item-section'>
+          <p className='todo-item-header'>Title</p>
           <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
         </div>
-        <div>
-          <p>Description</p>
+        <div className='todo-item-section'>
+          <p className='todo-item-header'>Description</p>
           <input type="text" value={description} onChange={e => setDescription(e.target.value)} />
         </div>
-        <div>
-          <p>Priorty</p>
+        <div className='todo-item-section'>
+          <p className='todo-item-header'>Priorty</p>
           <select value={priority} onChange={e => setPriority(e.target.value)} >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -58,21 +60,23 @@ const Todo = ({ todo, editTodo, deleteTodo, index }) => {
             <option value="5">5</option>
           </select>
         </div>
-        <div>
-          <p>Due Date</p>
+        <div className='todo-item-section'>
+          <p className='todo-item-header'>Due Date</p>
           <input type="text" value={dueDate} onChange={e => setDueDate(e.target.value)} />
         </div>
-        <div>
-          <p>Notes</p>
+        <div className='todo-item-section'>
+          <p className='todo-item-header'>Notes</p>
           <input type="text" value={notes} onChange={e => setNotes(e.target.value)} />
         </div>
-        <div>
-          <p>Completed</p>
+        <div className='todo-item-section'>
+          <p className='todo-item-header'>Completed</p>
           <input type="checkbox" checked={completed} onChange={e => setCompleted(e.target.checked)} />
         </div>
-        <i className="far fa-window-close" onClick={cancelEditTodo} ></i>
-        <i className="far fa-check-square" onClick={confirmEditTodo}></i>
-        <i className="far fa-trash-alt" onClick={() => deleteTodo(index)}></i>
+        <div className='todo-controls'>
+          <i className="far fa-trash-alt" onClick={() => deleteTodo(index)}></i>
+          <i className="far fa-window-close" onClick={cancelEditTodo} ></i>
+          <i className="far fa-check-square" onClick={confirmEditTodo}></i>
+        </div>
       </>
     );
   }

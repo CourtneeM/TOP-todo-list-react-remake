@@ -24,6 +24,17 @@ const NewTodoForm = props => {
     setCompleted(false);
   }
 
+  const cancelAddTodo = () => {
+    setNewTodoMode(false);
+
+    setTitle('');
+    setDescription('');
+    setPriority(1);
+    setDueDate('');
+    setNotes('');
+    setCompleted(false);
+  }
+
   const displayNewTodoForm = () => {
     return (
       <>
@@ -57,7 +68,10 @@ const NewTodoForm = props => {
           Completed
           <input type="checkbox" id='new-todo-completed' checked={completed} onChange={e => setCompleted(e.target.checked)} />
         </label>
-        <i className="far fa-check-square" onClick={() => addTodo()}></i>
+        <div className='new-todo-controls'>
+          <i className="far fa-window-close" onClick={cancelAddTodo} ></i>
+          <i className="far fa-check-square" onClick={() => addTodo()}></i>
+        </div>
       </>
     );
   }

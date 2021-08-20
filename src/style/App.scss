@@ -4,6 +4,13 @@
   padding: 0
 }
 
+// App //
+
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
 // Header //
 
 header {
@@ -18,4 +25,109 @@ header {
 
   .fa-check-square { color: lime; }
   .fa-edit { color: goldenrod; }
+}
+
+// New Todo Form //
+
+.new-todo-form {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  i { cursor: pointer; }
+
+  .new-todo-controls {
+    * {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  .fa-plus {
+    padding: 12px;
+    color: #fff;
+    background: lime;
+    border: 2px solid #777;
+    border-radius: 50%;
+  }
+
+  .fa-check-square {
+    font-size: 1.4rem;
+    color: lime;
+  }
+
+  .fa-window-close {
+    font-size: 1.4rem;
+    color: orange;
+  }
+}
+
+// Todos //
+
+.todos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Todo //
+
+.todo-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: 25px 20px;
+
+  &:nth-child(even) {
+    background: #eee;
+  }
+
+  .todo-item-section {
+    width: 200px;
+    margin: 10px auto;
+  }
+
+  .todo-item-header {
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  i { cursor: pointer; }
+
+  .todo-controls {
+    flex-basis: 100%;
+    text-align: center;
+
+    * {
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+  }
+
+  .fa-edit {
+    color: goldenrod;
+  }
+
+  .fa-window-close {
+    color: orange;
+  }
+  
+  .fa-check-square {
+    color: lime;
+  }
+  
+  .fa-trash-alt {
+    color: red;
+  }
 }
