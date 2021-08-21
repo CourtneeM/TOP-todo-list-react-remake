@@ -33,10 +33,10 @@ function App() {
     getTodoList();
   }, [])
 
-  const newTodo = (title, description, priority, dueDate, notes, completed) => {
-    return { title, description, priority, dueDate, notes, completed };
+  const deleteTodoFirebase = (todoId) => {
+
   }
-  
+
   const editListName = newListName => {
     ref.update({listName: newListName});
   }
@@ -49,11 +49,11 @@ function App() {
     .catch(error => console.error('Error adding new todo', error));
   }
 
-  const editTodo = (title, description, priority, dueDate, notes, completed, index) => {
-    const todoListCopy = [...todoList];
-    todoListCopy.splice(index, 1, newTodo(title, description, priority, dueDate, notes, completed));
-
-    setTodoList(todoListCopy);
+  const editTodo = (title, description, priority, dueDate, notes, completed, id) => {
+    ref.collection('todoList').doc(`${id}`).update({
+      title, description, priority, dueDate, notes, completed
+    })
+    .catch(error => console.error('Error editing todo', error));
   }
 
   const deleteTodo = index => {

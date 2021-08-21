@@ -13,7 +13,7 @@ const NewTodoForm = props => {
   const addTodo = () => {
     if (!title || !description || !dueDate || !notes) return;
 
-    props.addTodo({title, description, priority, dueDate, notes, completed});
+    props.addTodo({ title, description, priority, dueDate, notes, completed });
 
     setNewTodoMode(false);
     setTitle('');

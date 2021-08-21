@@ -6,7 +6,7 @@ const Todos = ({ todoList, editTodo, deleteTodo }) => {
     <div className='todos-container'>
       {
         todoList.map((todo, i) => {
-          return <Todo key={i} todo={todo} editTodo={editTodo} deleteTodo={deleteTodo} index={i} />
+          return <Todo key={i} todo={todo} editTodo={editTodo} deleteTodo={deleteTodo} />
         })
       }
     </div>

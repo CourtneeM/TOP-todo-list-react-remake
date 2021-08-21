@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Todo = ({ todo, editTodo, deleteTodo, index }) => {
+const Todo = ({ todo, editTodo, deleteTodo }) => {
   const [editTodoMode, setEditTodoMode] = useState(false);
   const [title, setTitle] = useState(todo.title);
   const [description, setDescription] = useState(todo.description);
@@ -8,6 +8,7 @@ const Todo = ({ todo, editTodo, deleteTodo, index }) => {
   const [dueDate, setDueDate] = useState(todo.dueDate);
   const [notes, setNotes] = useState(todo.notes);
   const [completed, setCompleted] = useState(todo.completed);
+  const [id, setId] = useState(todo.id);
 
   useEffect(() => {
     setEditTodoMode(false);
@@ -18,12 +19,13 @@ const Todo = ({ todo, editTodo, deleteTodo, index }) => {
     setDueDate(todo.dueDate);
     setNotes(todo.notes);
     setCompleted(todo.completed);
+    setId(todo.id);
   }, [todo]);
 
   const confirmEditTodo = () => {
     if (!title || !description || !dueDate || !notes) return;
 
-    editTodo(title, description, priority, dueDate, notes, completed, index);
+    editTodo(title, description, priority, dueDate, notes, completed, id);
 
     setEditTodoMode(false);
   }
@@ -73,7 +75,7 @@ const Todo = ({ todo, editTodo, deleteTodo, index }) => {
           <input type="checkbox" checked={completed} onChange={e => setCompleted(e.target.checked)} />
         </div>
         <div className='todo-controls'>
-          <i className="far fa-trash-alt" onClick={() => deleteTodo(index)}></i>
+          <i className="far fa-trash-alt" onClick={() => deleteTodo(id)}></i>
           <i className="far fa-window-close" onClick={cancelEditTodo} ></i>
           <i className="far fa-check-square" onClick={confirmEditTodo}></i>
         </div>
