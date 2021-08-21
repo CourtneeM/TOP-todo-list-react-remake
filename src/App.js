@@ -8,7 +8,7 @@ import NewTodoForm from './components/NewTodoForm';
 import './style/App.css';
 
 function App() {
-  const [listName, setListName] = useState("Todo List");
+  const [listName, setListName] = useState("");
   const [todoList, setTodoList] = useState([]);
 
   const ref = firebase.firestore().collection('users').doc('test');
@@ -33,12 +33,9 @@ function App() {
     getTodoList();
   }, [])
 
-  const deleteTodoFirebase = (todoId) => {
-
-  }
-
   const editListName = newListName => {
     ref.update({listName: newListName});
+    getListName();
   }
 
   const addTodo = (todo) => {
@@ -56,11 +53,8 @@ function App() {
     .catch(error => console.error('Error editing todo', error));
   }
 
-  const deleteTodo = index => {
-    const todoListCopy = [...todoList];
-    todoListCopy.splice(index, 1);
-
-    setTodoList(todoListCopy);
+  const deleteTodo = todoId => {
+    ref.collection('todoList').doc(`${todoId}`).delete();
   }
 
   return (
