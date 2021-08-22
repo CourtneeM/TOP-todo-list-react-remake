@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Header = ({ listName, editListName }) => {
+const Header = ({ signedIn, signIn, signOut, listName, editListName }) => {
   const [editMode, setEditMode] = useState(false);
   const [newListName, setNewListName] = useState(listName);
 
@@ -33,7 +33,13 @@ const Header = ({ listName, editListName }) => {
 
   return (
     <header>
-      { editMode ? displayEditName() : displayName() }
+      {
+        signedIn ?
+        <>
+          <button onClick={signOut}>Sign Out</button>
+          { editMode ? displayEditName() : displayName() }
+        </> : 
+        <button onClick={signIn}>Sign In</button> }
     </header>
   );
 }
